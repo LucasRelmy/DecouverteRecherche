@@ -18,5 +18,6 @@ public class MainClass {
         System.out.println("Meilleur Fitness au départ : " + swarm.getBestFitness());
 
 
+
     }
 }

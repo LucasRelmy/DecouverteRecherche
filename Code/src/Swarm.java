@@ -53,4 +53,12 @@ public class Swarm {
         }
         getBestFitness();
     }
+
+    public void UpdateParticlePos(){
+        for (int i = 0; i < (long) particles.size(); i++){
+            if(particles.get(i).getFitness()<bestFitness){
+                particles.get(i).setPosition(particles.get(i).getPosition()[0]+particles.get(i).getSpeed()[0],particles.get(i).getPosition()[1]+particles.get(i).getSpeed()[1]);
+            }
+        }
+    }
 }

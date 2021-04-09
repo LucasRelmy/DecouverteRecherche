@@ -16,8 +16,9 @@ public class Particle {
         return position;
     }
 
-    public void setPosition(int[] position) {
-        this.position = position;
+    public void setPosition(int x, int y) {
+        this.position[0] = x;
+        this.position[1] = y;
     }
 
     public int[] getSpeed() {
