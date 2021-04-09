@@ -1,9 +1,16 @@
 public class Particle {
-    private int[] position;
-    private int[] Speed;
+    private int[] position = new int[2];
+    private int[] Speed = new int[2];
     private int fitness;
-    private int[] bestPosition;
+    private int[] bestPosition = new int[2];
     private double bestFitness;
+
+    Particle(int pX, int pY, int xSpeed, int ySpeed){
+        position[0] = pX;
+        position[1] = pY;
+        Speed[0] = xSpeed;
+        Speed[1] = ySpeed;
+    }
 
     public int[] getPosition() {
         return position;
@@ -22,6 +29,7 @@ public class Particle {
     }
 
     public int getFitness() {
+        CalculateFitness();
         return fitness;
     }
 
@@ -45,12 +53,7 @@ public class Particle {
         this.bestFitness = bestFitness;
     }
 
-    Particle(int pX, int pY, int xSpeed, int ySpeed){
-        position[0] = pX;
-        position[1] = pY;
-        Speed[0] = xSpeed;
-        Speed[1] = ySpeed;
-    }
+
     public void CalculateFitness(){
         fitness=position[0]/position[1];
     }
