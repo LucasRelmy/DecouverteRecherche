@@ -27,5 +27,5 @@ while liste:
     
 plt.xlabel("On s'en fou")
 plt.ylabel("on s'en fou 2")
-plt.axis([0, 100, 0, 100])
+# plt.axis([0, 100, 0, 100])
 show()
