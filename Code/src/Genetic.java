@@ -10,7 +10,6 @@ public class Genetic {
     public void mutation(Particle p){
         Random r = new Random();
         if((r.nextInt((100 - 0) + 1) + 0)>50){
-            //TODO put a rand in x or y pos
         }
     }
 }

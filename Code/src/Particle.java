@@ -1,15 +1,24 @@
+import java.util.Arrays;
+
 public class Particle {
     private int[] position = new int[2];
     private int[] Speed = new int[2];
-    private int fitness;
+    private double fitness;
     private int[] bestPosition = new int[2];
-    private double bestFitness;
+    private double bestFitness = 0;
+    int maxprice;
+    int maxweight;
 
-    Particle(int pX, int pY, int xSpeed, int ySpeed){
+
+    Particle(int pX, int pY, int xSpeed, int ySpeed, int maxprice,int maxweight){
         position[0] = pX;
         position[1] = pY;
+        bestPosition[0] = pX;
+        bestPosition[1] = pY;
         Speed[0] = xSpeed;
         Speed[1] = ySpeed;
+        this.maxprice=maxprice;
+        this.maxweight=maxweight;
     }
 
     public int[] getPosition() {
@@ -25,16 +34,19 @@ public class Particle {
         return Speed;
     }
 
-    public void setSpeed(int[] speed) {
-        Speed = speed;
+    public void setSpeedX(int speed) {
+        Speed[0] = speed;
+    }
+    public void setSpeedY(int speed) {
+        Speed[1] = speed;
     }
 
-    public int getFitness() {
+    public double getFitness() {
         CalculateFitness();
         return fitness;
     }
 
-    public void setFitness(int fitness) {
+    public void setFitness(double fitness) {
         this.fitness = fitness;
     }
 
@@ -56,6 +68,17 @@ public class Particle {
 
 
     public void CalculateFitness(){
-        fitness=position[0]/position[1];
+        double fitnessActuel;
+        if ((position[0]<=0)||(position[1]<=0)||(position[1]>maxprice)||(position[1]>maxweight)){
+            fitnessActuel=-1;
+        }
+        else {
+            fitnessActuel=(double)position[0]/(double)position[1];
+        }
+
+        if (fitnessActuel > fitness){
+            setBestPosition(getPosition());
+        }
+        fitness=fitnessActuel;
     }
 }
