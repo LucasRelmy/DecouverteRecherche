@@ -7,7 +7,7 @@ ordonne = []
 
 # recupere le contenu de PointGrphique.txt et le met dans liste
 # enleve les crochets et les retours à la ligne
-with open("PointGraphique.txt", "r") as fichier:
+with open("PointGraphiqueAmeliore.txt", "r") as fichier:
     for points in fichier:
         liste.append(points.translate({ord(i): None for i in '[]\n'}))
 

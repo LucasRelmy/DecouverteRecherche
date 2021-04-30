@@ -15,6 +15,7 @@ public class MainClass {
 
         //Le fichier PointGraphique.txt
         File fichierOut = new File("PointGraphique.txt");
+        File fichierOutAmeliore = new File("PointGraphiqueAmeliore.txt");
 
         System.out.println(fichierTxt.getData(path));
         List<Element> elements = fichierTxt.getData(path);
@@ -22,7 +23,7 @@ public class MainClass {
 
         //On va ecrire dans fichierOut
         Writer writer = new FileWriter(fichierOut);
-
+        Writer writerAmeliore = new FileWriter(fichierOutAmeliore);
         //calcul prix et poid max
         int maxprice = 0 ;
         int maxweight = 0;
@@ -54,6 +55,11 @@ public class MainClass {
             //suivi d'une particule
             System.out.println("Particule "+1);
             System.out.println("Position :" + Arrays.toString(particles.get(1).getPosition()));
+
+            //ecrit le resultat de la position dans le fichier PointGraphique
+            writerAmeliore.write(String.valueOf(Arrays.toString(particles.get(1).getPosition())));
+            writerAmeliore.write("\n");
+
             System.out.println("Vitesse :" + Arrays.toString(particles.get(1).getSpeed()));
             System.out.println("Fitness :" + particles.get(1).getFitness());
             System.out.println("Meilleur Position :" + Arrays.toString(particles.get(1).getBestPosition()));
@@ -66,5 +72,6 @@ public class MainClass {
         System.out.println("Position (" + swarm.getBestPosition()[0] + ";" + swarm.getBestPosition()[1] +") , Fitness : " + swarm.getBestFitness());
         System.out.println("Ensemble d'objets correspondants : //TODO");
         writer.close();
+        writerAmeliore.close();
     }
 }
